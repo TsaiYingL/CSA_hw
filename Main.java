@@ -30,5 +30,21 @@ public class Main {
         System.out.println("\npowerTwo test:");
         System.out.println("800: " + Algorithm.powerTwo(800));
         System.out.println("2: " + Algorithm.powerTwo(2));
+
+        //testing countEven
+        System.out.println("\ncountEven test:");
+        System.out.println("test");
+        System.out.println("123456789: " + Algorithm.countEven(123456789));
+        System.out.println("313245: " + Algorithm.countEven(313245));
+
+        //testing onesDigit
+        System.out.println("\nonesDigit test:");
+        System.out.println("987654321: " + Algorithm.onesDigit(987654321));
+        System.out.println("123: " + Algorithm.onesDigit(123));
+
+        //testing deleteOnesDigit
+        System.out.println("\ndeleteOnesDigit test:");
+        System.out.println("987654321: " + Algorithm.deleteOnesDigit(987654321));
+        System.out.println("32432632: " + Algorithm.deleteOnesDigit(32432632));
     }
 }

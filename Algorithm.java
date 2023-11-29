@@ -72,4 +72,28 @@ public class Algorithm {
         }
         return twoToPower;
     }
+
+    public static int countEven(int num)
+    {
+        int i = 0;
+        while (num > 0)
+        {
+            if ((num%10)%2 == 0)
+            {
+                i++;
+            }
+            num /= 10;
+        }
+        return i;
+    }
+
+    public static int onesDigit(int num)
+    {
+        return num%10;
+    }
+
+    public static int deleteOnesDigit(int num)
+    {
+        return num/10;
+    }
 }
