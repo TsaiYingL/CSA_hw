@@ -82,16 +82,4 @@ public class Main {
             System.out.println();
         }
     }
-
-    public void columnMajor(Object[][] array) {
-        int numRows = array.length;
-        int numCols = array[0].length;
-
-        for (int j = 0; j < numCols; j++) {
-            for (int i = 0; i < numRows; i++) {
-                System.out.print(array[i][j] + " ");
-            }
-            System.out.println();
-        }
-    }
 }
