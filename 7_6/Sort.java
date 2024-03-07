@@ -1,3 +1,5 @@
+import java.util.ArrayList;
+
 /**
  * This class is a demonstration of selection sort and insertion sort
  * for AP Computer Science A.
@@ -19,11 +21,27 @@ public class Sort {
         System.out.println(str);
     }
 
+    public static void printArrInt(ArrayList<Integer> arr) {
+        String str = "[";
+        for (int i = 0; i < arr.size() - 1; i++)
+            str += arr.get(i) + ", ";
+        str += arr.get(arr.size() - 1) + "]";
+        System.out.println(str);
+    }
+
     public static void print(String[] strings) {
         String str = "[";
         for (int i = 0; i < strings.length - 1; i++)
             str += strings[i] + ", ";
         str += strings[strings.length - 1] + "]";
+        System.out.println(str);
+    }
+
+    public static void print(ArrayList<String> strings) {
+        String str = "[";
+        for (int i = 0; i < strings.size() - 1; i++)
+            str += strings.get(i) + ", ";
+        str += strings.get(strings.size() - 1) + "]";
         System.out.println(str);
     }
 
@@ -63,6 +81,20 @@ public class Sort {
         return index;
     }
 
+    public static int findMinIndex(int index, ArrayList<Integer> arr) {
+        int minUpdate = 0;
+        int min = arr.get(index);
+        for (int i = index; i < arr.size(); i++) {
+            if (arr.get(i) < min) {
+                min = arr.get(i);
+                index = i;
+                minUpdate++;
+            }
+        }
+        System.out.println("Minimum Updates: " + minUpdate);
+        return index;
+    }
+
     /**
      * Returns the index of the minimum value in an int array
      * beginning at a specified index
@@ -85,6 +117,20 @@ public class Sort {
         return index;
     }
 
+    public static int findMaxString(int index, ArrayList<String> strings) {
+        if (index > strings.size() - 1) {
+            return index;
+        }
+        String max = strings.get(index);
+        for (int i = index + 1; i < strings.size(); i++) {
+            if (max.compareTo(strings.get(i)) > 0) {
+                max = strings.get(i);
+                index = i;
+            }
+        }
+        return index;
+    }
+
     /**
      * Swaps the elements of two indices of an array
      * 
@@ -98,10 +144,22 @@ public class Sort {
         arr[j] = temp;
     }
 
+    public static void swapIntArr(ArrayList<Integer> arr, int i, int j) {
+        int temp = arr.get(i);
+        arr.set(i, arr.get(j));
+        arr.set(j, temp);
+    }
+
     public static void swap(String[] arr, int i, int j) {
         String temp = arr[i];
         arr[i] = arr[j];
         arr[j] = temp;
+    }
+
+    public static void swap(ArrayList<String> arr, int i, int j) {
+        String temp = arr.get(i);
+        arr.set(i, arr.get(j));
+        arr.set(j, temp);
     }
 
     /**
@@ -137,6 +195,78 @@ public class Sort {
         System.out.println("Swaps: " + swaps);
     }
 
+    public static void stringSSort(String[] strings) {
+        for (int i = 0; i < strings.length; i++) {
+            int maxWord = findMaxString(i, strings);
+            if (maxWord != i) {
+                swap(strings, i, maxWord);
+            }
+        }
+        print(strings);
+    }
+
+    public static void stringISort(String[] arr) {
+        for (int i = 1; i < arr.length; i++) {
+            String temp = arr[i];
+            int index = i;
+            while (index > 0 && temp.compareTo(arr[index - 1]) < 0) {
+                swap(arr, index, index - 1);
+                index--;
+            }
+        }
+        print(arr);
+    }
+
+    public static void stringArrSSort(ArrayList<String> strings) {
+        for (int i = 0; i < strings.size(); i++) {
+            int maxWord = findMaxString(i, strings);
+            if (maxWord != i) {
+                swap(strings, i, maxWord);
+            }
+        }
+        print(strings);
+    }
+
+    public static void stringArrISort(ArrayList<String> arr) {
+        for (int i = 1; i < arr.size(); i++) {
+            String temp = arr.get(i);
+            int index = i;
+            while (index > 0 && temp.compareTo(arr.get(index - 1)) < 0) {
+                swap(arr, index, index - 1);
+                index--;
+            }
+        }
+        print(arr);
+    }
+
+    public static void intISort(ArrayList<Integer> arr) {
+        int swaps = 0;
+        for (int i = 0; i < arr.size(); i++) {
+            int minIndex = findMinIndex(i, arr);
+            if (minIndex != i) {
+                swapIntArr(arr, i, minIndex);
+                swaps++;
+            }
+            printArrInt(arr);
+        }
+        System.out.println("Swaps: " + swaps);
+    }
+
+    public static void intSSort(ArrayList<Integer> arr) {
+        int swaps = 0;
+        for (int i = 1; i < arr.size(); i++) {
+            int temp = arr.get(i);
+            int index = i;
+            while (index > 0 && temp < arr.get(index - 1)) {
+                swapIntArr(arr, index, index - 1);
+                swaps++;
+                index--;
+            }
+            printArrInt(arr);
+        }
+        System.out.println("Swaps: " + swaps);
+    }
+
     /**
      * Swaps the elements of two indices of an array
      * 
@@ -166,28 +296,4 @@ public class Sort {
         }
         return -1;
     }
-
-    public static void stringSSort(String[] strings) {
-        for (int i = 0; i < strings.length; i++) {
-            int maxWord = findMaxString(i, strings);
-            if (maxWord != i) {
-                swap(strings, i, maxWord);
-            }
-        }
-        print(strings);
-    }
-
-    public static void stringISort(String[] arr) {
-        for (int i = 1; i < arr.length; i++) {
-            String temp = arr[i];
-            int index = i;
-            while (index > 0 && temp.compareTo(arr[index - 1]) < 0) {
-                swap(arr, index, index - 1);
-                index--;
-            }
-        }
-        print(arr);
-    }
-
-    
 }
